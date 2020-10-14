@@ -50,15 +50,20 @@ namespace BankingApplication
             currentBalance = currentBalance + montlyInterest;
         }
 
+        public virtual double getPercentageChange()
+        {
+            return ((currentBalance - startingBalance) * 100 / startingBalance);
+        }
+
         public virtual string CloseAndReport()
         {
             string report = "";
 
             CalculateInterest();
 
-            report = "previous balance : $" + startingBalance 
-                  + " \nNew balance      : $"+ currentBalance
-                  + "\n% change : " + (currentBalance - startingBalance) * 100 / startingBalance
+            report = "previous balance : $" + startingBalance
+                  + " \nNew balance      : $" + currentBalance
+                  + "\n% change : " + getPercentageChange()
                   + "\nInterest Rate:" + interestRate + "\n";
 
             currentBalance -= serviceCharge;
@@ -71,6 +76,8 @@ namespace BankingApplication
 
             return report;
         }
+
+
 
 
     }
