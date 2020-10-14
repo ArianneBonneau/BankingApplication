@@ -33,6 +33,10 @@ namespace BankingApplication
             {
                 base.MakeWithdraw(tw);
             }  
+           else
+            {
+                throw new Exception("Account is inactive");
+            }
             
         }
 
@@ -48,6 +52,7 @@ namespace BankingApplication
                 base.accountStatus = Status.inactive;
             }
 
+            Console.WriteLine("An extra $" + base.serviceCharge + "was charged for the withdrawals.\n");
             return base.CloseAndReport();
         }
     }

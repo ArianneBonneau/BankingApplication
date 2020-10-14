@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -178,7 +179,7 @@ namespace BankingApplication
                         }
                         else if (choice2 == "D")
                         {
-                            Console.WriteLine(GlobalSavings.USValue(3.33));
+                            Console.WriteLine("You have $" + GlobalSavings.USValue(3.33) + "(USD)");
                         }
                         else if (choice2 == "R")
                         {

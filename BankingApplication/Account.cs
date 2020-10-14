@@ -62,9 +62,12 @@ namespace BankingApplication
             CalculateInterest();
 
             report = "previous balance : $" + startingBalance
-                  + " \nNew balance      : $" + currentBalance
-                  + "\n% change : " + getPercentageChange()
-                  + "\nInterest Rate:" + interestRate + "\n";
+                  + " \nNew balance : $" + currentBalance +
+                  "\nYou did " + numDeposit + " deposit(s) for a total of $" + totalDeposits + "\nand "
+                  + numWithdrawals + " whitdraw(als) for a total of $(" + totalWithdrawals + ") this month."
+                  + "\n% change of the account : "
+                  + getPercentageChange()
+                  + "\nInterest Rate :" + interestRate + "\n";
 
             currentBalance -= serviceCharge;
             startingBalance = currentBalance;
