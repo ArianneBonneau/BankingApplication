@@ -33,7 +33,7 @@ namespace BankingApplication
             base.serviceCharge = (double) 5 + (numWithdrawals * 0.1);
             base.currentBalance -= base.serviceCharge;
 
-            Console.WriteLine("Your service chare for this month is: " + toNAMoneyFormat(base.serviceCharge, true));
+            Console.WriteLine("Your service charge for this month is: " + toNAMoneyFormat(base.serviceCharge, true));
             return base.CloseAndReport();
         }
     }
