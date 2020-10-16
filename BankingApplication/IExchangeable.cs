@@ -8,6 +8,6 @@ namespace BankingApplication
 {
     interface IExchangeable
     {
-        double USValue(double rate);
+        string USValue(double rate);
     }
 }

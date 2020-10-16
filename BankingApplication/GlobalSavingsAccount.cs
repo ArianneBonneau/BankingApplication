@@ -12,9 +12,9 @@ namespace BankingApplication
         {
         }
 
-        public virtual double USValue(double rate)
-        {
-            return (base.currentBalance * rate);
+        public virtual string USValue(double rate)
+        { 
+            return toNAMoneyFormat((base.currentBalance * rate), true);
         }
 
     }

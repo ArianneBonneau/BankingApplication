@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace BankingApplication
 {
@@ -47,7 +48,7 @@ namespace BankingApplication
                             }
 
                             Savings.MakeDeposit(num);
-                            Console.WriteLine("Your current balance is: " + Savings.currentBalance);
+                            Console.WriteLine("Your current balance is: " + Savings.toNAMoneyFormat(Savings.currentBalance, true));
 
                         }
                         else if (choice == "B")
@@ -63,7 +64,7 @@ namespace BankingApplication
                             }
 
                             Savings.MakeWithdraw(num);
-                            Console.WriteLine("Your current balance is: " + Savings.currentBalance);
+                            Console.WriteLine("Your current balance is: " + Savings.toNAMoneyFormat(Savings.currentBalance, true));
                         }
                         else if (choice == "C")
                         {
@@ -103,7 +104,7 @@ namespace BankingApplication
                             }
 
                             Checking.MakeDeposit(num);
-                            Console.WriteLine("Your current balance is: " + Checking.currentBalance);
+                            Console.WriteLine("Your current balance is: " + Checking.toNAMoneyFormat(Checking.currentBalance, true));
                         }
                         else if (choice1 == "B")
                         {
@@ -117,7 +118,7 @@ namespace BankingApplication
                                 throw new Exception("Must be a number.");
                             }
                             Checking.MakeWithdraw(num);
-                            Console.WriteLine("Your current balance is: " + Checking.currentBalance);
+                            Console.WriteLine("Your current balance is: " + Checking.toNAMoneyFormat(Checking.currentBalance, true));
                         }
                         else if (choice1 == "C")
                         {
@@ -157,7 +158,7 @@ namespace BankingApplication
                             }
 
                             GlobalSavings.MakeDeposit(num);
-                            Console.WriteLine("Your current balance is: " + GlobalSavings.currentBalance);
+                            Console.WriteLine("Your current balance is: " + GlobalSavings.toNAMoneyFormat(GlobalSavings.currentBalance, true));
                         }
                         else if (choice2 == "B")
                         {
@@ -171,7 +172,7 @@ namespace BankingApplication
                                 throw new Exception("Must be a number.");
                             }
                             GlobalSavings.MakeWithdraw(num);
-                            Console.WriteLine("Your current balance is: " + GlobalSavings.currentBalance);
+                            Console.WriteLine("Your current balance is: " + GlobalSavings.toNAMoneyFormat(GlobalSavings.currentBalance, true));
                         }
                         else if (choice2 == "C")
                         {
@@ -179,7 +180,7 @@ namespace BankingApplication
                         }
                         else if (choice2 == "D")
                         {
-                            Console.WriteLine("You have $" + GlobalSavings.USValue(3.33) + "(USD)");
+                            Console.WriteLine("You have " + GlobalSavings.USValue(0.71) + "(USD)");
                         }
                         else if (choice2 == "R")
                         {

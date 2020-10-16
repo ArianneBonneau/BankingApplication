@@ -52,7 +52,7 @@ namespace BankingApplication
                 base.accountStatus = Status.inactive;
             }
 
-            Console.WriteLine("An extra $" + base.serviceCharge + "was charged for the withdrawals.\n");
+            Console.WriteLine("An extra " + toNAMoneyFormat(base.serviceCharge, true) + " was charged for the withdrawals.\n");
             return base.CloseAndReport();
         }
     }

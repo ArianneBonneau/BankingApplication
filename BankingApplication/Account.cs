@@ -4,6 +4,7 @@ using System.Deployment.Internal;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace BankingApplication
 {
@@ -13,7 +14,7 @@ namespace BankingApplication
     }
     abstract class Account : IAccount
     {
-        public double startingBalance;
+        public double startingBalance; 
         public double currentBalance;
         double totalDeposits = 0;
         int numDeposit = 0;
@@ -55,19 +56,34 @@ namespace BankingApplication
             return ((currentBalance - startingBalance) * 100 / startingBalance);
         }
 
+        public virtual string toNAMoneyFormat(double amt, bool roundUp)
+        {
+            double d = amt;
+            if (roundUp)
+            {
+               d =  Math.Round(d, 2, MidpointRounding.AwayFromZero);
+            }
+            else
+            {
+                d = Math.Round(d, 2, MidpointRounding.ToEven);
+            }
+            return d.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+        }
+
+
         public virtual string CloseAndReport()
         {
             string report = "";
 
             CalculateInterest();
 
-            report = "previous balance : $" + startingBalance
-                  + " \nNew balance : $" + currentBalance +
-                  "\nYou did " + numDeposit + " deposit(s) for a total of $" + totalDeposits + "\nand "
-                  + numWithdrawals + " whitdraw(als) for a total of $(" + totalWithdrawals + ") this month."
+            report = "previous balance : " + toNAMoneyFormat(startingBalance, true)
+                  + " \nNew balance : " + toNAMoneyFormat(currentBalance, true) +
+                  "\nYou did " + numDeposit + " deposit(s) for a total of " + toNAMoneyFormat(totalDeposits, true) + "\nand "
+                  + numWithdrawals + " whitdraw(als) for a total of (" + toNAMoneyFormat(totalWithdrawals, true) + ") this month."
                   + "\n% change of the account : "
-                  + getPercentageChange()
-                  + "\nInterest Rate :" + interestRate + "\n";
+                  + Math.Round(getPercentageChange(), 2)
+                  + "%\nInterest Rate : " + interestRate + "%\n";
 
             currentBalance -= serviceCharge;
             startingBalance = currentBalance;

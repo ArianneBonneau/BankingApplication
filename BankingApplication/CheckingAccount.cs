@@ -20,6 +20,7 @@ namespace BankingApplication
             if ((base.currentBalance - tw) < 0)
             {
                 base.currentBalance -= 15.00;
+                Console.WriteLine("Insufficient funds, we cannot make your withdraw, and you need to pay $15.00.");
             }
             else
             {
@@ -30,7 +31,9 @@ namespace BankingApplication
         public override string CloseAndReport()
         {
             base.serviceCharge = (double) 5 + (numWithdrawals * 0.1);
-         
+            base.currentBalance -= base.serviceCharge;
+
+            Console.WriteLine("Your service chare for this month is: " + toNAMoneyFormat(base.serviceCharge, true));
             return base.CloseAndReport();
         }
     }
